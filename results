@@ -3,7 +3,23 @@ OBAMA
 
 ## Tweets on the President ##
 ============================
-13070
--12306
-positive tone/emotion for obama's tweets. Count = 764
+positive: 13070
+negative: -12306
+index = 0.515053593947 <== positive
+positive tone/emotion for obama's tweets. Diff = 764
+Tweets: 5976
+performance: 0.1278447
+++++++++++++++++++++++++++++
 
+
+EARTH-DAY
++ve and -ve words loaded..
+
+## Tweets on the Earth-Day ##
+============================
+positive: 19035
+negative: -11880
+index = 0.615720524017
+positive tone/emotion for earth_day's tweets. Diff = 7155
+Tweets: 5844
+erformance: 1.2243326

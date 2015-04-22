@@ -1,4 +1,5 @@
 import sqlite3
+import re
 
 conn = sqlite3.connect('tweets.db')
 
@@ -26,11 +27,14 @@ def main():
 	print "============================"
 	twts = [None]
 	twts.extend([x[0].lower().encode('utf-8') for x in tweets])
+	print  "# of tweets = %d"%len(twts)
 	p = determineAccuracy(twts, positiveWords, 1)
 	n = determineAccuracy(twts, negativeWords, -1)
 	h = p + n
 	print p
 	print n
+	index = float(p) / (p - n)
+	print index
 	printStatus(h, "obama's tweets")
 
 
