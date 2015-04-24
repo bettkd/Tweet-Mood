@@ -13,7 +13,7 @@ cj = CookieJar()
 opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cj))
 opener.addheaders = [('User-agent', 'Mozilla/5.0')]
 
-keyword = 'earthday'
+keyword = 'pope%20francis'
 searchLink = 'https://twitter.com/search/realtime?q='
 '''table_name = 'earth_day - change it in all queries'''
 
@@ -37,7 +37,7 @@ def main():
 def scrapeTweets():
 	currentTweets = [None] #can only parse upto 20 tweets at a time
 	newTweets = [None]
-	similarityWeights = [.5,.5,.5,.5]
+	similarityWeights = [.5,.5,.5,.5,.5,.5,.5,.5,.5,.5]
 
 	i = 0
 	while i < 10000: # Loop 10,000 times unless interrupted
@@ -54,7 +54,7 @@ def scrapeTweets():
 					tweetr = tweetr.decode('utf-8')
 					allTweets[tweetr] = time.time()
 					#print tweetr
-					c.execute("INSERT INTO earth_day (tweets, currentTime) VALUES (?, ?)", (tweetr, time.time()))
+					c.execute("INSERT INTO pope_francis (tweets, currentTime) VALUES (?, ?)", (tweetr, time.time()))
 
 				########### Comparison helps detetmine how much time before next ping #####
 				newTweets.append(tweetr)
@@ -71,7 +71,7 @@ def scrapeTweets():
 			similarityWeights.append(tweetSimilarity)
 			similarityWeights = similarityWeights[1:]
 
-			sleepTime = np.mean(similarityWeights)*60 # running average of the 4 wights in the array
+			sleepTime = np.mean(similarityWeights)*500 # running average of the 4 wights in the array
 			print '%d Sleep Time =\t     %f'%(i+1, sleepTime)
 
 			time.sleep(sleepTime)
