@@ -12,6 +12,18 @@ performance: 0.1278447
 ++++++++++++++++++++++++++++
 
 
++ve and -ve words loaded..
+
+## Tweets on the President ##
+============================
+# of tweets = 9784
+20866
+-20161
+0.508591902893
+positive tone/emotion for obama's tweets. Count = 705
++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++
+
 EARTH-DAY
 +ve and -ve words loaded..
 
@@ -23,6 +35,7 @@ index = 0.615720524017
 positive tone/emotion for earth_day's tweets. Diff = 7155
 Tweets: 5844
 performance: 1.2243326
+++++++++++++++++++++++++++++++
 
 
 
@@ -36,3 +49,4 @@ POPE FRANCIS
 -ve: -2207
 indec: 0.52761130137
 positive tone/emotion for obama's tweets. Count = 258
+++++++++++++++++++++++++++++

@@ -13,7 +13,7 @@ cj = CookieJar()
 opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cj))
 opener.addheaders = [('User-agent', 'Mozilla/5.0')]
 
-keyword = 'pope%20francis'
+keyword = 'obama'
 searchLink = 'https://twitter.com/search/realtime?q='
 '''table_name = 'earth_day - change it in all queries'''
 
@@ -37,7 +37,9 @@ def main():
 def scrapeTweets():
 	currentTweets = [None] #can only parse upto 20 tweets at a time
 	newTweets = [None]
-	similarityWeights = [.5,.5,.5,.5,.5,.5,.5,.5,.5,.5]
+	similarityWeights = [.1,.1,.1,.1,.1,.1,.1,.1,.1,.1]
+
+	fl = open('obamaTweetsIn.txt', 'a')
 
 	i = 0
 	while i < 10000: # Loop 10,000 times unless interrupted
@@ -54,25 +56,37 @@ def scrapeTweets():
 					tweetr = tweetr.decode('utf-8')
 					allTweets[tweetr] = time.time()
 					#print tweetr
-					c.execute("INSERT INTO pope_francis (tweets, currentTime) VALUES (?, ?)", (tweetr, time.time()))
+					c.execute("INSERT INTO obama (tweets, currentTime) VALUES (?, ?)", (tweetr, time.time()))
 
 				########### Comparison helps detetmine how much time before next ping #####
-				newTweets.append(tweetr)
+					newTweets.append(tweetr)
 
 			compareTweets =  difflib.SequenceMatcher(None, currentTweets, newTweets)
 			tweetSimilarity = compareTweets.ratio()
+
+
+			th = len(splitSource)
+			tl = len(newTweets)
+
 
 			currentTweets = [None]
 			for x in newTweets:
 				currentTweets.append(x)
 			newTweets = [None]
 
+			
+
+
 			print '%d Tweet Similarity = %f'%(i+1, tweetSimilarity)
 			similarityWeights.append(tweetSimilarity)
 			similarityWeights = similarityWeights[1:]
 
-			sleepTime = np.mean(similarityWeights)*500 # running average of the 4 wights in the array
+			sleepTime = np.mean(similarityWeights)*(th-tl+1)*10 # running average of the 4 wights in the array
 			print '%d Sleep Time =\t     %f'%(i+1, sleepTime)
+
+			print 'tweets loaded = %d/%d'%(tl, th)
+
+			fl.write('\n%d\t%d\t%d\t%f\t%f'%(i+1, tl, th, tweetSimilarity, sleepTime))
 
 			time.sleep(sleepTime)
 			##############
