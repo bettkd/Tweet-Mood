@@ -13,7 +13,7 @@ cj = CookieJar()
 opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cj))
 opener.addheaders = [('User-agent', 'Mozilla/5.0')]
 
-keyword = 'obama'
+keyword = 'nepal'
 searchLink = 'https://twitter.com/search/realtime?q='
 '''table_name = 'earth_day - change it in all queries'''
 
@@ -22,7 +22,7 @@ allTweets = dict()
 conn = sqlite3.connect('tweets.db')
 
 c = conn.cursor()
-#c.execute('''CREATE TABLE earth_day (tweets text, currentTime real)''') #create table
+c.execute('''CREATE TABLE nepal (tweets text, currentTime real)''') #create table
 
 def main():
 
@@ -39,7 +39,7 @@ def scrapeTweets():
 	newTweets = [None]
 	similarityWeights = [.1,.1,.1,.1,.1,.1,.1,.1,.1,.1]
 
-	fl = open('obamaTweetsIn.txt', 'a')
+	fl = open('nepalTweetsIn.txt', 'a')
 
 	i = 0
 	while i < 10000: # Loop 10,000 times unless interrupted
@@ -56,7 +56,7 @@ def scrapeTweets():
 					tweetr = tweetr.decode('utf-8')
 					allTweets[tweetr] = time.time()
 					#print tweetr
-					c.execute("INSERT INTO obama (tweets, currentTime) VALUES (?, ?)", (tweetr, time.time()))
+					c.execute("INSERT INTO nepal (tweets, currentTime) VALUES (?, ?)", (tweetr, time.time()))
 
 				########### Comparison helps detetmine how much time before next ping #####
 					newTweets.append(tweetr)
