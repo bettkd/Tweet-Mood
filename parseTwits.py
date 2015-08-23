@@ -22,7 +22,7 @@ allTweets = dict()
 conn = sqlite3.connect('tweets.db')
 
 c = conn.cursor()
-c.execute('''CREATE TABLE dell (tweets text, currentTime real)''') #create table
+#c.execute('''CREATE TABLE dell (tweets text, currentTime real)''') #create table
 
 def main():
 
@@ -44,10 +44,10 @@ def scrapeTweets():
 	i = 0
 	while i < 10000: # Loop 10,000 times unless interrupted
 		try:
-			sourceCode = opener.open(searchLink+keyword+'&src=hash').read()
+			sourceCode = opener.open(searchLink+keyword+'&src=hash&f=tweets').read()
 			
 			#split source by tweet-text tag
-			splitSource  = re.findall(r'<p class="js-tweet-text tweet-text" lang="en".*?>(.*?)</p>', sourceCode)
+			splitSource  = re.findall(r'<p class=".*js-tweet-text tweet-text.*" lang="en".*>(.*?)</p>', sourceCode)
 			
 			for eachTweet in splitSource:
 				tweetr = re.sub(r'<.*?>', '', eachTweet) # get rid of tags
