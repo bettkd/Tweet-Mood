@@ -101,7 +101,7 @@ toolz==0.7.1
 tornado==4.1
 ujson==1.33
 unicodecsv==0.9.4
-Werkzeug==0.10.1
+Werkzeug==0.15.3
 xlrd==0.9.3
 XlsxWriter==0.6.7
 xlwings==0.3.4
