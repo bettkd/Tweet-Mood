@@ -74,7 +74,7 @@ pycrypto==2.6.1
 pycurl==7.19.5.1
 pyflakes==0.8.1
 Pygments==2.0.2
-pyOpenSSL==0.14
+pyOpenSSL==17.5.0
 pyparsing==2.0.3
 pytest==2.6.4
 python-dateutil==2.4.1
