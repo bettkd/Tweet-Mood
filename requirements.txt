@@ -28,7 +28,7 @@ decorator==3.4.0
 docutils==0.12
 enum34==1.0.4
 fastcache==1.0.2
-Flask==0.10.1
+Flask==1.0
 freeze==1.0.9
 funcsigs==0.4
 futures==2.2.0
