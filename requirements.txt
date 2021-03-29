@@ -73,7 +73,7 @@ pycparser==2.10
 pycrypto==2.6.1
 pycurl==7.19.5.1
 pyflakes==0.8.1
-Pygments==2.0.2
+Pygments==2.7.4
 pyOpenSSL==17.5.0
 pyparsing==2.0.3
 pytest==2.6.4
