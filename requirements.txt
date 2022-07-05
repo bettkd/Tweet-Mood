@@ -99,7 +99,7 @@ tables==3.1.1
 terminado==0.5
 toolz==0.7.1
 tornado==4.1
-ujson==1.33
+ujson==5.4.0
 unicodecsv==0.9.4
 Werkzeug==0.15.3
 xlrd==0.9.3
